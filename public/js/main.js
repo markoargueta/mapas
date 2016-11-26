@@ -78,7 +78,7 @@ var app={
       },
 
       cargarMapa:function(){
-		alert('llama pinta_rutas');
+		//alert('llama pinta_rutas');
 		localStorage.string_array_puntos = '[]';
         array_puntos = JSON.parse(localStorage.string_array_puntos);
         app.geolocalizar();
