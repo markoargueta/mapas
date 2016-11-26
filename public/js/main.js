@@ -8,6 +8,9 @@
     var array_puntos = JSON.parse(localStorage.string_array_puntos);
    //escuchando al evento click  del boton inicializar
   	//$("#btnInicializar").on('click', alert('llamada'));
+
+var socket=io.connect('https://mapamarco.herokuapp.com/');
+
 var app={
       geolocalizar:function (){
         GMaps.geolocate({
@@ -84,11 +87,18 @@ var app={
         app.geolocalizar();
       },
 
+      listenSockect:function(){
+        socket.on('usuario conectado', function(contador){
+          $('#divContador').html(contador);//Cargando datos en el div
+        });
+      },
+
 
     inicializar: function() {
 		"use strict";
 		var self=this;
         self.cargarMapa(); //llamando metodo que carga el mapa
+        self.listenSockect();//activando el socket
 	}
 
 };
